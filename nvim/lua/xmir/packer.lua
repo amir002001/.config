@@ -28,6 +28,12 @@ return require('packer').startup(function(use)
         end
     })
 
+    --LuaLine
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
+
     --PETS!!!
     use({
         "giusgad/pets.nvim",
