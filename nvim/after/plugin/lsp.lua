@@ -1,12 +1,17 @@
 local lsp = require("lsp-zero")
+local lspUtils = require("lspconfig.util")
 
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-  'tsserver',
-  'eslint',
-  'rust_analyzer',
-  'pylsp',
+    'tsserver',
+    'bashls',
+    'denols',
+    'eslint',
+    'pyright',
+    'tsserver',
+    'volar',
+    'lua_ls'
 })
 
 local cmp = require('cmp')
@@ -26,9 +31,8 @@ lsp.setup_nvim_cmp({
   mapping = cmp_mappings
 })
 
-lsp.on_attach(function(client, bufnr)
+local on_attach = function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
-
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
@@ -39,6 +43,35 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-end)
+end
+
+lsp.on_attach(on_attach)
+
+
+-- LUA_LS CONFIG
+lsp.configure("lua_ls", {
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
+})
+
+-- TSSERVER CUSTOMIZATION
+lsp.configure("tsserver", {
+	root_dir = lspUtils.root_pattern("package.json"),
+	single_file_support = false,
+})
+
+-- DENOLS CUSTOMIZATION
+lsp.configure("denols", {
+	root_dir = lspUtils.root_pattern("deno.json", "deno.jsonc"),
+	single_file_support = false,
+})
 
 lsp.setup()
