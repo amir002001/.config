@@ -23,7 +23,7 @@ return require('packer').startup(function(use)
         'rose-pine/neovim',
         as = 'rose-pine',
         config = function()
-            require("rose-pine").setup()
+            require('rose-pine').setup()
             vim.cmd('colorscheme rose-pine')
         end
     })
@@ -34,21 +34,12 @@ return require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
-    --PETS!!!
-    use({
-        "giusgad/pets.nvim",
-        requires = {
-            "edluffy/hologram.nvim",
-            "MunifTanjim/nui.nvim",
-        }
-    })
     --LSP ZERO STUFF
 
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
         requires = {
-            -- LSP Support
             {'neovim/nvim-lspconfig'},             -- Required
             {'williamboman/mason.nvim'},           -- Optional
             {'williamboman/mason-lspconfig.nvim'}, -- Optional
@@ -66,5 +57,21 @@ return require('packer').startup(function(use)
             {'rafamadriz/friendly-snippets'}, -- Optional
         }
     }
+    -- copilot
+    use('github/copilot.vim')
 
+    --error trouble
+    use ('nvim-tree/nvim-web-devicons')
+    use {
+        'folke/trouble.nvim',
+        requires = 'nvim-tree/nvim-web-devicons',
+        config = function()
+
+            require('trouble').setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
 end)
