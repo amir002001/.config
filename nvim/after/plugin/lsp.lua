@@ -7,8 +7,8 @@ lsp.ensure_installed({
     'tsserver',
     'bashls',
     'denols',
-    'eslint',
     'pyright',
+    'rome@nightly',
     'tsserver',
     'volar',
     'lua_ls'
@@ -61,6 +61,7 @@ lsp.configure("lua_ls", {
         },
     },
 })
+
 
 -- lsp.configure("rome", {
 --     root_dir = lspUtils.root_pattern("rome.json"),
