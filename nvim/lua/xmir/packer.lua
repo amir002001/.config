@@ -27,6 +27,10 @@ return require('packer').startup(function(use)
         end
     })
 
+    -- null-ls and mason-null-ls
+    use('jay-babu/mason-null-ls.nvim')
+    use('jose-elias-alvarez/null-ls.nvim')
+
     --LuaLine
     use {
         'nvim-lualine/lualine.nvim',
