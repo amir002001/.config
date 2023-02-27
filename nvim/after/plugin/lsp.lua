@@ -9,6 +9,7 @@ lsp.ensure_installed({
     'denols',
     'pyright',
     'rome@nightly',
+    'eslint',
     'tsserver',
     'volar',
     'lua_ls'
@@ -89,7 +90,6 @@ vim.diagnostic.config({
     update_in_insert = false,
     underline = true,
     severity_sort = true,
-    float = true,
 })
 
 -- LSP FORMAT ON SAVE

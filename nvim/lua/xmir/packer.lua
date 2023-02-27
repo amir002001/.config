@@ -56,8 +56,6 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' }, -- Optional
         }
     }
-    -- copilot
-    use('github/copilot.vim')
 
     --error trouble
     use('nvim-tree/nvim-web-devicons')
