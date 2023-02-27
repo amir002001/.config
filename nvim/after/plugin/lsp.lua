@@ -82,10 +82,10 @@ lsp.configure("lua_ls", {
 	},
 })
 
--- lsp.configure("rome", {
---     root_dir = lspUtils.root_pattern("rome.json"),
---     single_file_support = false,
--- })
+lsp.configure("rome", {
+	root_dir = lspUtils.root_pattern("rome.json"),
+	single_file_support = false,
+})
 
 -- TSSERVER CUSTOMIZATION
 lsp.configure("tsserver", {
