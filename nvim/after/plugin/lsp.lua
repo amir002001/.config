@@ -160,6 +160,7 @@ null_ls.setup({
 			end,
 		}),
 		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.formatting.rustywind,
 		-- You can add tools not supported by mason.nvim
 	},
 })
